@@ -1,14 +1,45 @@
 @import '../scss/variables.scss';
 
-.aw-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  font-size: 3.5rem;
-  color: $headerFontColor;
+.header-container {
+  display: flex;
   background-color: $signatureColor;
   text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding: 1rem;
+}
+
+.title {
+  flex: 8;
+  text-align: center;
+  color: $headerFontColor;
+  font-size: 2rem;
+}
+
+.filter-button {
+  flex: 1;
+  height: 2rem;
+  width: 2rem;
+  display: none;
+}
+
+.add-button {
+  flex: 1;
+  height: 2rem;
+  width: 2rem;
+  display: none;
+}
+
+@media (max-width: 500px) {
+.header-container {
+  padding-top: 1rem !important;
+  padding: 0.5rem;
+}
+
+  .filter-button {
+    display: block;
+  }
+
+  .add-button {
+    display: block;
+  }
 }

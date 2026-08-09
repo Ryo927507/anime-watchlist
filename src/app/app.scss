@@ -1,5 +1,20 @@
-.app-layout {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+.header-container {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.main-container {
+  position: absolute;
+  width: 100%;
+  top: 3.5rem;
+  left: 0;
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

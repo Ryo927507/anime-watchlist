@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="left-container">
+  <div class="container left-container" [class.container-shown]="tabSelectionService.selectedTab === 0">
     <div class="label">
       Filter
     </div>
@@ -18,7 +18,8 @@
       <mat-icon class="icon" (click)="deleteStatusInputFilter()"> highlight_off </mat-icon>
     </div>
   </div>
-  <div class="middle-container">
+
+  <div class="container middle-container"  [class.container-shown]="tabSelectionService.selectedTab === 1">
     <div class="tab-selector-container">
       @if (isTabSelectorToggled) {
         <div class="label tab-selector selected" (click)="toggleTabSelectorWatched()">
@@ -35,8 +36,8 @@
           Geplante Anime
         </div>
       }
-      
     </div>
+
     @for (anime of (outputAnime$ | async) ?? []; track anime) {
       <div class="item" [ngStyle]="{'background-color': changeColor(anime.status)}">
         <div class="label-container">
@@ -48,12 +49,12 @@
           } @else if (isEditing && currentEditId == anime.id) {
             @if (!errorWatched) {
               <div class="input-container"> 
-                <input class="input" type="text" placeholder="Titel" [(ngModel)]="editableTitle"/> 
+                <input class="input-edit" type="text" placeholder="Titel" [(ngModel)]="editableTitle"/> 
                 <mat-icon class="icon" (click)="deleteTitleInputEdit()"> highlight_off </mat-icon>
               </div>
               @if (isTabSelectorToggled) {
                 <div class="input-container"> 
-                  <input class="input" type="text" placeholder="Status"
+                  <input class="input-edit" type="text" placeholder="Status"
                   [(ngModel)]="editableStatus"
                   list="statusOptions"/> 
                   <mat-icon class="icon" (click)="deleteStatusInputEdit()"> highlight_off </mat-icon>
@@ -100,7 +101,8 @@
       </div>
     }
   </div>
-  <div class="right-container">
+
+  <div class="container right-container"  [class.container-shown]="tabSelectionService.selectedTab === 2">
     <div class="adding-anime-container">
       <div class="label">
         Gesehenen Anime hinzufügen
@@ -132,6 +134,7 @@
         + Hinzufügen
       </div>
     </div>
+    
     <div class="adding-anime-container">
       <div class="label">
         Geplanten Anime hinzufügen

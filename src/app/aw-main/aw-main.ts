@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { map, Observable } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 import { Anime } from '../models/anime.model';
 import { AnimeService } from '../services/anime-service';
-
-import { MatIconModule } from '@angular/material/icon';
+import { TabSelectionService } from '../services/tab-selection-service';
 
 @Component({
   selector: 'app-aw-main',
@@ -15,7 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AwMain {
   // constructor
-  constructor(private AnimeService: AnimeService) {}
+  constructor(
+    private AnimeService: AnimeService, 
+    public tabSelectionService: TabSelectionService
+  ) {}
 
   // variables
   watchedAnime$!: Observable<Anime[]>;

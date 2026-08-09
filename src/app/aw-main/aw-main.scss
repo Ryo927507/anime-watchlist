@@ -1,4 +1,4 @@
-@import "material-icons/iconfont/material-icons.css";
+@import '../scss/variables.scss';
 
 mat-icon {
   height: 2rem !important;
@@ -14,44 +14,39 @@ mat-icon:hover {
 .main {
   display: flex;
   position: absolute;
-  top: 5rem;
-  bottom: 5rem;
-  left: 0;
   width: 100%;
+}
+
+.container {
+  height: 79vh;
+  border : 1px solid gray;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem;
+  background-color: #f0f0f0;
+}
+
+.container-shown {
+  display: block !important;
 }
 
 .left-container {
   flex: 1;
-  height: 75vh;
-  border : 1px solid gray;
-  border-radius: 1rem;
-  padding: 2rem;
-  margin: 2rem;
-  background-color: #f0f0f0;
 }
 
 .middle-container {
   flex: 2;
-  height: 75vh;
-  border : 1px solid gray;
-  border-radius: 1rem;
-  padding: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
   overflow-y: scroll;
-  background-color: #f0f0f0;
 }
 
 .right-container {
   display: flex;
   flex: 1;
   flex-direction: column;
-  height: 75vh;
-  border : 1px solid gray;
-  border-radius: 1rem;
-  padding: 2rem;
-  margin: 2rem;
-  background-color: #f0f0f0;
 }
 
 .label {
@@ -146,12 +141,15 @@ mat-icon:hover {
 
 .adding-anime-container {
   flex: 1;
+  height: 50%;
 }
 
 .addItem {
   font-size: 2rem;
   text-align: center;
-
+  background-color: $signatureColor;
+  border: 1px solid gray;
+  border-radius: 1rem;
   padding: 1rem;
   margin-top: 2rem;
 }
@@ -159,4 +157,93 @@ mat-icon:hover {
 .addItem:hover {
   background-color: rgb(177, 177, 177);
   cursor: pointer;
+}
+
+.filter-button-oberlay {
+  position: absolute;
+  top: -2.8rem;
+  left: 0rem;
+  border-radius: 0.2rem;
+  margin-left: 0.7rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.add-button-oberlay {
+  position: absolute;
+  top: -2.8rem;
+  right: 0rem;
+  border-radius: 0.2rem;
+  margin-right: 0.7rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+@media (max-width: 500px) {
+  .main {
+    display: block;
+  }
+
+  .container {
+    height: 86vh;
+    padding: 0.5rem;
+    margin: 1rem;
+    display: none;
+  }
+
+  .left-container {
+    display: none;
+  }
+
+  .middle-container {
+    flex: 2;
+    margin: 0.5rem !important;
+    overflow-y: scroll;
+  }
+
+  .right-container {
+    display: none;
+  }
+
+  .label {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .tab-selector {
+    font-size: 1rem;
+  }
+
+  .item {
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    background-color: #f0f0f0;
+  }
+
+  .content {
+    padding: 0.5rem;
+  }
+
+  .input-container {
+    margin-bottom: 1rem;
+  }
+
+  .input-edit {
+    font-size: 1rem;
+  }
+
+  .delete-icon-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .delete-icon {
+    color: red;
+  }
 }
