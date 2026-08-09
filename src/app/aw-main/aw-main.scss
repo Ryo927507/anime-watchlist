@@ -1,0 +1,162 @@
+@import "material-icons/iconfont/material-icons.css";
+
+mat-icon {
+  height: 2rem !important;
+  width: 2rem !important;
+  font-size: 2rem !important;
+}
+
+mat-icon:hover {
+  color: rgb(97, 97, 97);
+  cursor: pointer;
+}
+
+.main {
+  display: flex;
+  position: absolute;
+  top: 5rem;
+  bottom: 5rem;
+  left: 0;
+  width: 100%;
+}
+
+.left-container {
+  flex: 1;
+  height: 75vh;
+  border : 1px solid gray;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem;
+  background-color: #f0f0f0;
+}
+
+.middle-container {
+  flex: 2;
+  height: 75vh;
+  border : 1px solid gray;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow-y: scroll;
+  background-color: #f0f0f0;
+}
+
+.right-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 75vh;
+  border : 1px solid gray;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem;
+  background-color: #f0f0f0;
+}
+
+.label {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.input {
+  font-size: 2rem;
+  width: 100%;
+}
+
+.icon {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.tab-selector-container {
+  display: flex;
+}
+
+.tab-selector {
+  flex: 1;
+  border: 1px solid gray;
+  padding-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
+
+.selected {
+  background-color: gray;
+  color: white;
+}
+
+.item {
+  display: flex;
+  font-size: 2rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.label-container {
+  flex: 3;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-icon-container {
+  flex: 1;
+}
+
+.delete-icon-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.delete-icon {
+  color: red;
+}
+
+.delete-icon:hover {
+  color: rgb(188, 0, 0);
+}
+
+.error::placeholder {
+  color: red;
+}
+
+.adding-anime-container {
+  flex: 1;
+}
+
+.addItem {
+  font-size: 2rem;
+  text-align: center;
+
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.addItem:hover {
+  background-color: rgb(177, 177, 177);
+  cursor: pointer;
+}

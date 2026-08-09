@@ -1,0 +1,14 @@
+@import '../scss/variables.scss';
+
+.aw-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 1rem;
+  color: $headerFontColor;
+  background-color: $signatureColor;
+  text-align: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
