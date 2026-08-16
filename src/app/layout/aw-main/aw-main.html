@@ -1,0 +1,11 @@
+<div class="main">
+  <div class="container">
+    @if (tabSelectionService.selectedTab === 0) {
+      <app-aw-settings-page></app-aw-settings-page>
+    } @else if (tabSelectionService.selectedTab === 1) {
+      <app-aw-personal-list-page></app-aw-personal-list-page>
+    } @else {
+      <app-aw-explore-page></app-aw-explore-page>
+    }
+  </div>
+</div>

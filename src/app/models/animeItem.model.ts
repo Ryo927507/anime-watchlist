@@ -1,0 +1,31 @@
+export interface AnimeItem {
+  mal_id: string;
+  title: string;
+  title_english: string;
+  title_japanese: string;
+  type: string,
+  source: string,
+  episodes: number,
+  status: string,
+  airing: boolean,
+  aired_from: string,
+  aired_to: string,
+  duration: string,
+  rating: string,
+  score: number,
+  scored_by: number,
+  rank: number,
+  popularity: number,
+  members: number,
+  favorites: number,
+  season: string,
+  year: number,
+  studios: string,
+  producers: string,
+  licensors: string,
+  genres: string,
+  themes: string,
+  demographics: string,
+  synopsis: string,
+  image_url: string
+}

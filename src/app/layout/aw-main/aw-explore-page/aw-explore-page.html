@@ -1,0 +1,25 @@
+<div class="input-container">
+  <input class="input" type="text" placeholder="Titel" 
+  [(ngModel)]="filterTitle"
+  (ngModelChange)="filterAnime()"
+  />
+  <mat-icon class="icon" (click)="deleteTitleInputFilter()"> highlight_off </mat-icon>
+</div>
+
+<div class="pagination-container">
+  <div class="pagination-button" (click)="previousPage()" [class.disabled]="currentPage === 1">Previous</div>
+  <div class="pagination-info top">Page {{ currentPage + 1 }} / {{ maxPages$ | async }}</div>
+  <div class="pagination-button" (click)="nextPage()" [class.disabled]="((outputAnime$ | async)?.length ?? 0) <= (currentPage + 1) * 25">Next</div>
+</div>
+
+@if ((outputAnime$ | async); as outputAnime) {
+  @for (anime of outputAnime.slice(currentPage * 25, (currentPage + 1) * 25); track anime.title_english) {
+    <app-anime-entry [animeEntry]="anime"></app-anime-entry>
+  }
+}
+
+<div class="pagination-container">
+  <div class="pagination-button bottom" (click)="previousPage()" [class.disabled]="currentPage === 1">Previous</div>
+  <div class="pagination-info top">Page {{ currentPage + 1 }} / {{ maxPages$ | async }}</div>
+  <div class="pagination-button bottom" (click)="nextPage()" [class.disabled]="((outputAnime$ | async)?.length ?? 0) <= (currentPage + 1) * 25">Next</div>
+</div>

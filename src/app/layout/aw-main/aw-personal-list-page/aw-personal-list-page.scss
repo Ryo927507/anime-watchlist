@@ -1,0 +1,77 @@
+@import '../../../scss/variables.scss';
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.input {
+  font-size: 2rem;
+  width: 100%;
+  height: 3rem;
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid $borderColor;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.icon {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: -2.5rem;
+}
+
+.empty-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.empty-list-label {
+  color: $borderColor;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.add-icon {
+  color: $borderColor;
+  font-size: 10rem;
+  height: 10rem;
+  width: 10rem;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .input-container {
+    margin-bottom: 1rem;
+  }
+
+  .input {
+    font-size: 1.5rem;
+    height: 2.5rem;
+  }
+
+  .empty-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+  }
+
+  .empty-list-label {
+    font-size: 1.5rem;
+  }
+
+  .add-icon {
+    font-size: 8rem;
+    height: 8rem;
+    width: 8rem;
+  }
+}

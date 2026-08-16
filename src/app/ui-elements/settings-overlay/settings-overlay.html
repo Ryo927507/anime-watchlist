@@ -1,0 +1,19 @@
+<div class="settings-icon-container">
+  @if (animeEntry.status !== 'Explore') {
+    <div (click)="onEditIconClick()"><mat-icon>more_vert</mat-icon></div>
+
+    <div class="settings-icon-overlay" [class.schow-overlay]="isSettingsOverlayVisible">
+      <div class="settings-content" (click)="onEditClick()">Bearbeiten</div>
+      <div class="settings-content" (click)="onDeleteClick()">Löschen</div>
+      @if(isEditOverlayVisibile) {
+        <app-edit-overlay [animeEntry]="animeEntry" (cancel)="onEditCancel($event)"></app-edit-overlay>
+      }
+    </div>
+  } @else {
+    <div (click)="onAddIconClick()"><mat-icon>add</mat-icon></div>
+
+    @if (isAddOverlayVisibile) {
+      <app-add-overlay [animeEntry]="animeEntry" (cancel)="onAddCancel($event)"></app-add-overlay>
+    }
+  }
+</div>

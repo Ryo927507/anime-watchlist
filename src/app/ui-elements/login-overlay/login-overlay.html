@@ -1,0 +1,14 @@
+<div class="edit-overlay-backdrop" aria-modal="true" role="dialog">
+  <div class="edit-overlay-surface">
+    <div class="header-label">Login</div>
+    <div class="input-container">
+      <div class="input-label">Benutzername:</div>
+      <input class="input-edit" type="text" placeholder="Benutzername"
+        [(ngModel)]="userName"/> 
+    </div>
+
+    <div class="button-container">
+      <div class="button" (click)="login()">Login</div>
+    </div>
+  </div>
+</div>

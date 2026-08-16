@@ -1,0 +1,74 @@
+@import '../../scss/variables.scss';
+
+.header-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: $signatureColor;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.title {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  text-align: center;
+  color: $headerFontColor;
+  font-size: clamp(1rem, 3vw, 2rem);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.25rem;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  color: $headerFontColor;
+  padding: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-button {
+  margin-left: 0;
+}
+
+.right-button {
+  margin-right: 0;
+}
+
+.selected {
+  color: $signatureColor;
+  background-color: white;
+}
+
+@media (max-width: 500px) {
+  .header-container {
+    gap: 0.25rem;
+    padding: 0.35rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.1rem;
+  }
+
+  .button {
+    width: 2.1rem;
+    min-width: 2.1rem;
+    height: 2.1rem;
+  }
+}

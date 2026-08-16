@@ -1,0 +1,20 @@
+<div class="input-container">
+  <input class="input" type="text" placeholder="Titel" 
+  [(ngModel)]="filterTitle"
+  (ngModelChange)="filterAnime()"
+  />
+  <mat-icon class="icon" (click)="deleteTitleInputFilter()"> highlight_off </mat-icon>
+</div>
+
+@if ((outputAnime$ | async); as outputAnime) {
+  @if (outputAnime.length > 0) {
+    @for (anime of outputAnime; track anime.title_english) {
+      <app-anime-entry [animeEntry]="anime"></app-anime-entry>
+    }
+  } @else {
+    <div class="empty-list-container">
+      <div class="empty-list-label">Bisher befinden sich keine Anime in deiner Liste</div>
+      <mat-icon class="add-icon" (click)="addIconClicked()">playlist_add</mat-icon>
+    </div>
+  }
+}

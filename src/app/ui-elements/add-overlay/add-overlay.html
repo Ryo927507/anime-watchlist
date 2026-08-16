@@ -1,0 +1,25 @@
+<div class="edit-overlay-backdrop" aria-modal="true" role="dialog">
+  <div class="edit-overlay-surface">
+    <div class="header-label">Hinzufügen</div>
+    <div class="input-container">
+      <div class="input-label">Status:</div>
+      <select class="input-edit" [(ngModel)]="animeStatus">
+        <option value="Geschaut">Geschaut</option>
+        <option value="Nicht fertig geschaut">Nicht fertig geschaut</option>
+        <option value="Aktueller Stand">Aktueller Stand</option>
+        <option value="Läuft aktuell">Läuft aktuell</option>
+        <option value="Fertig, evtl. Fortsetzung">Fertig, evtl. Fortsetzung</option>
+        <option value="Abgebrochen">Abgebrochen</option>
+      </select>
+
+      <div class="input-label">Kommentar:</div>
+      <input class="input-edit" type="text" placeholder="Kommentar"
+        [(ngModel)]="animeComment"/> 
+    </div>
+
+    <div class="button-container">
+      <div class="button cancel-button" (click)="cancelButtonClicked()">Abbrechen</div>
+      <div class="button save-button" (click)="saveButtonClicked()">Speichern</div>
+    </div>
+  </div>
+</div>

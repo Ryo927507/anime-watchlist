@@ -1,0 +1,133 @@
+@import '../../scss/variables.scss';
+
+.anime-entry {
+  border : 1px solid $borderColor;
+  border-radius: 1rem;
+  display: flex;
+  width: 100%;
+  height: 20vh;
+  margin-bottom: 1rem;
+}
+
+.watched {
+  background-color: $watchedColor;
+}
+
+.notFinished {
+  background-color: $notFinishedColor;
+}
+
+.upToDate {
+  background-color: $upToDateColor;
+}
+
+.running {
+  background-color: $runningColor;
+}
+
+.finishedMaybeMore {
+  background-color: $finishedMaybeMoreColor;
+}
+
+.droped {
+  background-color: $dropedColor;
+}
+
+.explore {
+  background-color: $exploreColor;
+}
+
+.nothing {
+  background-color: $nothingColor;
+}
+
+.error {
+  background-color: $errorColor;
+}
+
+.image-container{
+  flex: 0 0 10rem;
+  max-width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  margin-right: 0;
+}
+
+.anime-image {
+  display: block;
+  border-radius: 1rem 0 0 1rem;
+  object-fit: contain;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  margin-left: 0;
+}
+
+.content-container {
+  flex: 5;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.top-row {
+  display: flex;
+}
+
+.title {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.info {
+  display: flex;
+}
+
+.info-left {
+  flex: 1;
+}
+
+.info-right {
+  flex: 1;
+}
+
+.content {
+  margin-bottom: 1rem;
+  word-break: break-word;
+}
+
+.one-line {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.star-icon {
+  color: darkorange;
+}
+
+@media (max-width: 500px) {
+  .anime-entry {
+    height: 15vh;
+  }
+
+  .content-container {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .title {
+    margin-bottom: 0.25rem;
+  }
+
+  .content {
+    margin-bottom: 0rem;
+  }
+
+  mat-icon {
+    font-size: 1rem;
+    height: 1rem;
+    width: 1rem;
+  }
+}

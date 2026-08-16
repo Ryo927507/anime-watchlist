@@ -1,0 +1,26 @@
+@import '../../scss/variables.scss';
+
+.main {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+
+.container {
+  height: 82.5vh;
+  width: 70vw;
+  border : 1px solid $borderColor;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: auto;
+  margin-top: 1rem;
+  background-color: $backgroundColor;
+  overflow-y: auto;
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 85vw;
+  }
+}

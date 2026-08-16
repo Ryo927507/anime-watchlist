@@ -1,0 +1,8 @@
+@if (isOverlayVisibile) {
+  <app-login-overlay (cancel)="onCancel($event)"></app-login-overlay>
+} 
+
+<div class="user-container">
+  <div class="user-name">Eingeloggt als: {{ loginService.currentUser }}</div>
+  <button class="logout-button" type="button" (click)="logout()">Logout</button>
+</div>

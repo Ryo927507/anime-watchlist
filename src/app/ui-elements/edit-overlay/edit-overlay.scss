@@ -1,0 +1,115 @@
+@import '../../scss/variables.scss';
+
+.edit-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 17, 17, 0.45);
+  padding-bottom: 5rem;
+}
+
+.edit-overlay-surface {
+  width: min(30vw);
+  min-height: min(40vh);
+  border-radius: 1.25rem;
+  background: rgb(86, 85, 85);
+  padding: 1rem;
+}
+
+.header-label {
+  text-align: center;
+  font-size: 3rem;
+  margin: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.input-label {
+  margin-bottom: 0.5rem;
+}
+
+.input-edit {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 3rem;
+  padding: 0 0.75rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid $borderColor;
+  font-size: 2rem;
+  font-family: inherit;
+  line-height: 1.2;
+  background-color: #fff;
+}
+
+.input-edit:focus {
+  outline: none;
+}
+
+select.input-edit {
+  appearance: menulist;
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+  padding-right: 2.2rem;
+}
+
+.button-container {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.button {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.cancel-button {
+  background-color: rgb(220, 53, 69);
+}
+
+.cancel-button:hover {
+  background-color: rgb(243, 86, 102);
+}
+
+.save-button {
+  background-color: rgb(40, 167, 69);
+}
+
+.save-button:hover {
+  background-color: rgb(59, 194, 90);
+}
+
+@media (max-width: 500px) {
+  .edit-overlay-backdrop {
+    padding-bottom: 5rem;
+  }
+
+  .edit-overlay-surface {
+    width: min(80vw);
+    min-height: min(28vh);
+  }
+
+  .header-label {
+    font-size: 1.5rem;
+    margin: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .input-edit {
+    height: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .button {
+    padding: 0.5rem;
+  }
+}
