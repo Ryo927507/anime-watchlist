@@ -1,0 +1,77 @@
+.settings-icon-container {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.settings-trigger {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.settings-trigger:hover,
+.settings-trigger[aria-expanded='true'] {
+  background: #374151;
+  color: #f9fafb;
+}
+
+.settings-icon-overlay {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 9rem;
+  border: 1px solid #4b5563;
+  padding: 0.35rem;
+  border-radius: 0.75rem;
+  background: #111827;
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.35);
+  color: #f9fafb;
+  z-index: 100;
+}
+
+.settings-content {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.settings-content:hover {
+  background: #374151;
+}
+
+.settings-content:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.delete-action:hover {
+  background: #7f1d1d;
+}
+
+.error-message {
+  max-width: 14rem;
+  margin: 0.5rem 0.25rem 0;
+  color: #fecaca;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 500px) {
+  .settings-content {
+    font-size: 0.9rem;
+  }
+}

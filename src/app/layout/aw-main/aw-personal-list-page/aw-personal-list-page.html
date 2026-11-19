@@ -9,7 +9,15 @@
 @if ((outputAnime$ | async); as outputAnime) {
   @if (outputAnime.length > 0) {
     @for (anime of outputAnime; track anime.title_english) {
-      <app-anime-entry [animeEntry]="anime"></app-anime-entry>
+      <app-anime-entry
+        [root]="loginService.currentUser"
+        [anime]="{
+          id: anime.id,
+          title: anime.title_english,
+          status: anime.status,
+          comment: anime.comment
+        }"
+      ></app-anime-entry>
     }
   } @else {
     <div class="empty-list-container">

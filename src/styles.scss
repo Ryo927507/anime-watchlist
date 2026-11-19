@@ -73,10 +73,9 @@ body {
 html, body {
   width: 100vw;
   max-width: 100vw;
-  min-height: 100vh;
   height: 100%;
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 body {
@@ -87,5 +86,7 @@ app-root {
   display: block;
   width: 100vw;
   max-width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }

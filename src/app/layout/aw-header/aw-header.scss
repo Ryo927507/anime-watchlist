@@ -1,74 +1,61 @@
 @import '../../scss/variables.scss';
 
 .header-container {
+  position: relative;
   width: 100%;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  background-color: $signatureColor;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.title {
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: 100%;
-  text-align: center;
-  color: $headerFontColor;
-  font-size: clamp(1rem, 3vw, 2rem);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.25rem;
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.button {
-  flex: 0 0 auto;
-  width: 2.5rem;
-  min-width: 2.5rem;
-  height: 2.5rem;
-  color: $headerFontColor;
-  padding: 0;
-  border-radius: 0.5rem;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: $signatureColor;
+  padding: 1.5rem 1rem 0.75rem;
+  box-sizing: border-box;
 }
 
-.left-button {
-  margin-left: 0;
+.title {
+  min-width: 0;
+  color: $headerFontColor;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
 }
 
-.right-button {
-  margin-right: 0;
+.logout-button {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0;
+  background: transparent;
+  color: $headerFontColor;
+  font: inherit;
+  cursor: pointer;
 }
 
-.selected {
-  color: $signatureColor;
-  background-color: white;
+.logout-button mat-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 500px) {
   .header-container {
-    gap: 0.25rem;
-    padding: 0.35rem;
+    padding: 1.5rem 1rem 0.75rem;
   }
 
   .title {
-    font-size: 1.5rem;
-    padding: 0.4rem 0.1rem;
+    font-size: 1.65rem;
   }
+}
 
-  .button {
-    width: 2.1rem;
-    min-width: 2.1rem;
-    height: 2.1rem;
+@media (max-width: 400px) {
+  .title {
+    font-size: 1.3rem;
   }
 }

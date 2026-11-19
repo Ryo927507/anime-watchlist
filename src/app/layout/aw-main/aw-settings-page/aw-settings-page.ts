@@ -3,11 +3,11 @@ import { FormsModule } from '@angular/forms';
 
 import { LoginService } from '../../../services/login-service';
 import { TabSelectionService } from '../../../services/tab-selection-service';
-import { EditOverlay } from '../../../ui-elements/login-overlay/login-overlay';
+import { LoginOverlay } from '../../../ui-overlays/login-overlay/login-overlay';
 
 @Component({
   selector: 'app-aw-settings-page',
-  imports: [FormsModule, EditOverlay],
+  imports: [FormsModule, LoginOverlay],
   templateUrl: './aw-settings-page.html',
   styleUrl: './aw-settings-page.scss',
 })
@@ -22,11 +22,8 @@ export class AwSettingsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    const storedUser = localStorage.getItem('currentUser');
-
-    if (storedUser && this.loginService.users.includes(storedUser)) {
-      this.userName = storedUser;
-      this.loginService.currentUser = storedUser;
+    if (this.loginService.currentUser) {
+      this.userName = this.loginService.currentUser;
       this.isOverlayVisibile = false;
       this.tabSelectionService.selectedTab = 0;
     } else {
@@ -43,8 +40,7 @@ export class AwSettingsPage implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
-    this.loginService.currentUser = '';
+    this.loginService.logout();
     this.userName = '';
     this.isOverlayVisibile = true;
     this.tabSelectionService.selectedTab = 0;

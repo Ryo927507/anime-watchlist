@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { TabSelectionService } from '../../services/tab-selection-service';
+import { LoginService } from '../../services/login-service';
 
 @Component({
   selector: 'app-aw-header',
@@ -9,19 +9,5 @@ import { TabSelectionService } from '../../services/tab-selection-service';
   styleUrl: './aw-header.scss',
 })
 export class AwHeader {
-  @Output() versionToggled = new EventEmitter<boolean>();
-
-  constructor(public tabSelectionService: TabSelectionService) {}
-  
-  onSettingsButtonClick() {
-    this.tabSelectionService.selectedTab = 0;
-  }
-
-  onTitleClick() {
-    this.tabSelectionService.selectedTab = 1;
-  }
-
-  onAddButtonClick() {
-    this.tabSelectionService.selectedTab = 2;
-  }
+  constructor(public loginService: LoginService) {}
 }

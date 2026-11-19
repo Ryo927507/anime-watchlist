@@ -44,6 +44,12 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
+## Firebase user directory
+
+Anime collections remain named after the username. To allow a user with an empty anime list to log in, add a document to the Firestore `users` collection with the exact username as its document ID (for example, `users/Ry0nosk3`). The document can contain a field such as `active: true`.
+
+Users whose anime collection already contains documents are also recognized without a directory entry. Add directory entries for users who need to remain valid even after their last anime document is deleted. Firestore Security Rules must allow the app to read the corresponding `users/{username}` document and anime collection.
+
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:

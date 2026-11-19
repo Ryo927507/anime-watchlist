@@ -1,0 +1,164 @@
+.add-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 17, 17, 0.45);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.add-overlay-surface {
+  width: min(30rem, 100%);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1.25rem;
+  background: #1f2937;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.header-label {
+  margin: 0 0 1.5rem;
+  color: #f9fafb;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e2e8f0;
+}
+
+.input-edit {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+.input-edit:focus {
+  outline: 2px solid #818cf8;
+  outline-offset: 1px;
+}
+
+.status-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 0.75rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.status-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.status-option mat-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  font-size: 1.15rem;
+}
+
+.status-option.selected {
+  border-color: currentColor;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+}
+
+.status-option.watched mat-icon { color: #4ade80; }
+.status-option.started mat-icon { color: #60a5fa; }
+.status-option.dropped mat-icon { color: #f87171; }
+.status-option.current mat-icon { color: #fbbf24; }
+.status-option.planned mat-icon { color: #9ca3af; }
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  gap: 1rem;
+}
+
+.button {
+  flex: 1;
+  min-height: 2.75rem;
+  border: 0;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+}
+
+.cancel-button:hover {
+  background-color: #f35666;
+}
+
+.add-button {
+  background-color: #28a745;
+}
+
+.add-button:hover {
+  background-color: #3bc25a;
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.error-message {
+  margin: 0.25rem 0;
+  color: #fecaca;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 500px) {
+  .add-overlay-surface {
+    padding: 1.25rem;
+  }
+
+  .button-container {
+    gap: 0.65rem;
+  }
+
+  .status-options {
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    padding: 0.65rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}

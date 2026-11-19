@@ -1,0 +1,55 @@
+<div class="add-overlay-backdrop" aria-modal="true" role="dialog" aria-labelledby="add-overlay-title">
+  <div class="add-overlay-surface">
+    <h2 class="header-label" id="add-overlay-title">Anime hinzufügen</h2>
+    <div class="input-container">
+      <label class="input-label" for="anime-title">Titel</label>
+      <input
+        id="anime-title"
+        class="input-edit"
+        type="text"
+        placeholder="Anime-Titel"
+        required
+        [(ngModel)]="animeTitle"
+      />
+
+      <label class="input-label" for="anime-status">Status</label>
+      <div class="status-options" role="radiogroup" aria-label="Status auswählen">
+        @for (status of statuses; track status.value) {
+          <label class="status-option" [class]="status.className" [class.selected]="animeStatus === status.value">
+            <input
+              type="radio"
+              name="anime-status"
+              [value]="status.value"
+              [(ngModel)]="animeStatus"
+              required
+            />
+            <mat-icon aria-hidden="true">{{ status.icon }}</mat-icon>
+            <span>{{ status.value }}</span>
+          </label>
+        }
+      </div>
+
+      <label class="input-label" for="anime-comment">Kommentar</label>
+      <input
+        id="anime-comment"
+        class="input-edit"
+        type="text"
+        placeholder="Optionaler Kommentar"
+        [(ngModel)]="animeComment"
+      />
+    </div>
+
+    @if (errorMessage) {
+      <p class="error-message" role="alert">{{ errorMessage }}</p>
+    }
+
+    <div class="button-container">
+      <button class="button cancel-button" type="button" (click)="cancelButtonClicked()" [disabled]="isSaving">
+        Abbrechen
+      </button>
+      <button class="button add-button" type="button" (click)="addToList()" [disabled]="isSaving">
+        {{ isSaving ? 'Wird hinzugefügt...' : 'Hinzufügen' }}
+      </button>
+    </div>
+  </div>
+</div>

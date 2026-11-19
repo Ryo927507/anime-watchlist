@@ -1,97 +1,31 @@
-<div class="anime-entry"
-  [class.watched]="animeEntry.status === 'Geschaut'"
-  [class.notFinished]="animeEntry.status === 'Nicht fertig geschaut'"
-  [class.upToDate]="animeEntry.status === 'Aktueller Stand'"
-  [class.running]="animeEntry.status === 'Läuft aktuell'"
-  [class.finishedMaybeMore]="animeEntry.status === 'Fertig, evtl. Fortsetzung'"
-  [class.droped]="animeEntry.status === 'Abgebrochen'"
-  [class.explore]="animeEntry.status === 'Explore'"
-  [class.nothing]="animeEntry.status === ''"
-  [class.error]="!animeEntry.status">
-  <div class="image-container">
-    <img [src]="animeEntry.image_url" alt="Anime image" class="anime-image">
+<article class="anime-entry">
+  <div class="top-row">
+    <h2 class="title">{{ anime.title }}</h2>
+    <app-settings-overlay [anime]="anime" [root]="root"></app-settings-overlay>
   </div>
-  <div class="content-container">
-    <!-- Titel -->
-    <div class="top-row">
-      <div class="title"><strong> {{ animeEntry.title_english }} </strong></div>
-      <app-settings-overlay [animeEntry]="animeEntry"></app-settings-overlay>
-    </div>
 
-    <div class="info">
-      <div class="info-left">
-        <!-- Epdisodes -->
-        @if (animeEntry.type === 'Movie') {
-          <div class="content"><mat-icon>video_library</mat-icon> Film </div>
-        } @else {
-          @if (animeEntry.episodes) {
-            @if (animeEntry.episodes > 1) {
-              <div class="content"><mat-icon>video_library</mat-icon> {{ animeEntry.episodes }} Folgen</div>
-            } @else {
-              <div class="content"><mat-icon>video_library</mat-icon> {{ animeEntry.episodes }} Folge</div>
-            }
-          } @else {
-            <div class="content"><mat-icon>video_library</mat-icon> Läuft aktuell </div>
-          }
-        }
-
-        <!-- Year -->
-        @if (animeEntry.year) {
-          <div class="content"><mat-icon>date_range</mat-icon> {{ animeEntry.year }} </div>
-        } @else {
-          <div class="content one-line"><mat-icon>date_range</mat-icon> Jahr unbekannt </div>
-        }
-
-        <!-- Score -->
-        <div class="content">
-          @if (animeEntry.score < 0.5) {
-            <mat-icon>star_border</mat-icon>
-          } @else if (animeEntry.score >= 0.5 && animeEntry.score < 1.5) {
-            <mat-icon class="star-icon">star_half</mat-icon>
-          } @else if (animeEntry.score >= 1.5) {
-            <mat-icon class="star-icon">star</mat-icon>
-          }
-
-          @if (animeEntry.score < 2.5) {
-            <mat-icon>star_border</mat-icon>
-          } @else if (animeEntry.score >= 2.5 && animeEntry.score < 3.5) {
-            <mat-icon class="star-icon">star_half</mat-icon>
-          } @else if (animeEntry.score >= 3.5) {
-            <mat-icon class="star-icon">star</mat-icon>
-          }
-
-          @if (animeEntry.score < 4.5) {
-            <mat-icon>star_border</mat-icon>
-          } @else if (animeEntry.score >= 4.5 && animeEntry.score < 5.5) {
-            <mat-icon class="star-icon">star_half</mat-icon>
-          } @else if (animeEntry.score >= 5.5) {
-            <mat-icon class="star-icon">star</mat-icon>
-          }
-
-          @if (animeEntry.score < 6.5) {
-            <mat-icon>star_border</mat-icon>
-          } @else if (animeEntry.score >= 6.5 && animeEntry.score < 7.5) {
-            <mat-icon class="star-icon">star_half</mat-icon>
-          } @else if (animeEntry.score >= 7.5) {
-            <mat-icon class="star-icon">star</mat-icon>
-          }
-
-          @if (animeEntry.score < 8.5) {
-            <mat-icon>star_border</mat-icon>
-          } @else if (animeEntry.score >= 8.5 && animeEntry.score < 9.5) {
-            <mat-icon class="star-icon">star_half</mat-icon>
-          } @else if (animeEntry.score >= 9.5) {
-            <mat-icon class="star-icon">star</mat-icon>
-          }
-        </div>
-      </div>
-
-      <div class="info-right">
-        @if (animeEntry.status !== 'Explore') {
-          <div class="content"> {{ animeEntry.status }} </div>
-        }
-        <div class="content"> {{ animeEntry.comment }} </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <span
+    class="status-badge"
+    [class.watched]="anime.status === 'Geschaut'"
+    [class.started]="anime.status === 'Begonnen'"
+    [class.dropped]="anime.status === 'Abgebrochen'"
+    [class.current]="anime.status === 'Aktueller Stand'"
+    [class.planned]="anime.status === 'Geplant'"
+  >
+    @if (anime.status === 'Geschaut') {
+      <mat-icon>check_circle</mat-icon>
+    } @else if (anime.status === 'Begonnen') {
+      <mat-icon>play_circle</mat-icon>
+    } @else if (anime.status === 'Abgebrochen') {
+      <mat-icon>cancel</mat-icon>
+    } @else if (anime.status === 'Aktueller Stand') {
+      <mat-icon>pending_actions</mat-icon>
+    } @else if (anime.status === 'Geplant') {
+      <mat-icon>event</mat-icon>
+    }
+    {{ anime.status }}
+  </span>
+  @if (anime.comment) {
+    <p class="anime-comment">{{ anime.comment }}</p>
+  }
+</article>

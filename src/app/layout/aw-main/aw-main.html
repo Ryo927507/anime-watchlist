@@ -1,11 +1,116 @@
-<div class="main">
-  <div class="container">
-    @if (tabSelectionService.selectedTab === 0) {
-      <app-aw-settings-page></app-aw-settings-page>
-    } @else if (tabSelectionService.selectedTab === 1) {
-      <app-aw-personal-list-page></app-aw-personal-list-page>
-    } @else {
-      <app-aw-explore-page></app-aw-explore-page>
+<main class="main">
+  <section class="container">
+    <label class="search-container" [class.disabled]="!hasAnimeInSelectedList">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input
+        class="search-input"
+        type="search"
+        placeholder="Anime suchen..."
+        [(ngModel)]="searchText"
+        [disabled]="!hasAnimeInSelectedList"
+      />
+    </label>
+
+    <div class="list-toggle" role="tablist" aria-label="Anime-Listen">
+      <button
+        type="button"
+        role="tab"
+        [attr.aria-selected]="selectedList === 'seen'"
+        [class.selected]="selectedList === 'seen'"
+        (click)="selectedList = 'seen'"
+      >Gesehen</button>
+      <button
+        type="button"
+        role="tab"
+        [attr.aria-selected]="selectedList === 'planned'"
+        [class.selected]="selectedList === 'planned'"
+        (click)="selectedList = 'planned'"
+      >Geplant</button>
+    </div>
+
+    @if (selectedList === 'seen' && hasAnimeInSelectedList) {
+      <button
+        class="filter-toggle"
+        type="button"
+        aria-controls="seen-status-filters"
+        [attr.aria-expanded]="isSeenFilterExpanded"
+        (click)="isSeenFilterExpanded = !isSeenFilterExpanded"
+      >
+        <span class="filter-toggle-label">
+          <mat-icon>filter_list</mat-icon>
+          Erweiterter Filter
+        </span>
+        <span class="filter-toggle-selection">{{ selectedSeenStatusLabel }}</span>
+        <mat-icon>{{ isSeenFilterExpanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </button>
+
+      @if (isSeenFilterExpanded) {
+        <div
+          id="seen-status-filters"
+          class="status-toggle"
+          role="group"
+          aria-label="Gesehene Anime nach Status filtern"
+        >
+          @for (status of seenStatusFilters; track status) {
+            <button
+              type="button"
+              [attr.aria-pressed]="isSeenStatusSelected(status)"
+              [class.selected]="isSeenStatusSelected(status)"
+              (click)="toggleSeenStatus(status)"
+            >{{ status }}</button>
+          }
+        </div>
+      }
     }
-  </div>
-</div>
+
+    @if (isLoading) {
+      <p class="empty-list">Anime werden geladen...</p>
+    } @else if (loadError) {
+      <p class="empty-list">{{ loadError }}</p>
+    } @else {
+      @if (!isEmptySelectedList) {
+        <div class="anime-count">{{ filteredAnime.length }} Anime</div>
+      }
+
+      <div class="anime-list">
+        @for (group of groupedAnime; track group.letter) {
+          <h2 class="letter-heading">
+            <span class="letter-mark">{{ group.letter }}</span>
+            <span class="letter-rule" aria-hidden="true"></span>
+          </h2>
+          @for (anime of group.entries; track anime.id) {
+            <app-anime-entry
+              [anime]="anime"
+              [root]="animeCollection"
+            ></app-anime-entry>
+          }
+        } @empty {
+          @if (!isEmptySelectedList) {
+            <p class="empty-list">Keine Anime gefunden.</p>
+          }
+        }
+      </div>
+    }
+  </section>
+
+  <button
+    class="add-anime-button"
+    [class.empty-state]="isEmptySelectedList"
+    type="button"
+    aria-label="Anime hinzufügen"
+    (click)="isAddOverlayVisible = true"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+
+  @if (isEmptySelectedList) {
+    <p class="empty-state-hint">Klicke auf das Plus, um deinen ersten Anime hinzuzufügen.</p>
+  }
+
+  @if (isAddOverlayVisible) {
+    <app-add-overlay
+      [root]="animeCollection"
+      (cancel)="isAddOverlayVisible = false"
+    ></app-add-overlay>
+  }
+</main>

@@ -1,0 +1,53 @@
+<div class="settings-icon-container">
+  @if (anime.status === 'Explore') {
+    <button class="settings-trigger" type="button" aria-label="Anime hinzufügen" (click)="onAddClick()">
+      <mat-icon>add</mat-icon>
+    </button>
+    @if (isAddOverlayVisible) {
+      <app-add-overlay
+        [animeEntry]="animeEntryForAdding"
+        [root]="root"
+        (cancel)="onAddCancel($event)"
+      ></app-add-overlay>
+    }
+  } @else {
+    <button
+      class="settings-trigger"
+      type="button"
+      aria-label="Einstellungen für Anime"
+      aria-haspopup="menu"
+      [attr.aria-expanded]="isSettingsOverlayVisible"
+      (click)="onSettingsClick()"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    @if (isSettingsOverlayVisible) {
+      <div class="settings-icon-overlay" role="menu">
+        <button class="settings-content" type="button" role="menuitem" (click)="onEditClick()">
+          Bearbeiten
+        </button>
+        <button
+          class="settings-content delete-action"
+          type="button"
+          role="menuitem"
+          [disabled]="isDeleting"
+          (click)="onDeleteClick()"
+        >
+          {{ isDeleting ? 'Wird gelöscht...' : 'Löschen' }}
+        </button>
+        @if (errorMessage) {
+          <p class="error-message" role="alert">{{ errorMessage }}</p>
+        }
+      </div>
+    }
+
+    @if (isEditOverlayVisible) {
+      <app-edit-overlay
+        [anime]="anime"
+        [root]="root"
+        (cancel)="onEditCancel($event)"
+      ></app-edit-overlay>
+    }
+  }
+</div>

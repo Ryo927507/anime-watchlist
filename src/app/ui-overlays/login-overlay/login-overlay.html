@@ -1,0 +1,29 @@
+<div class="edit-overlay-backdrop" aria-modal="true" role="dialog">
+  <div class="edit-overlay-surface">
+    <div class="header-label">Login</div>
+    <form (ngSubmit)="login()" [attr.aria-busy]="isChecking">
+      <div class="input-container">
+        <label class="input-label" for="login-user-name">Benutzername:</label>
+        <input
+          id="login-user-name"
+          class="input-edit"
+          type="text"
+          placeholder="Benutzername"
+          autocomplete="username"
+          [disabled]="isChecking"
+          [(ngModel)]="userName"
+          name="userName"
+        />
+      </div>
+      @if (errorMessage) {
+        <p class="error-message" role="alert">{{ errorMessage }}</p>
+      }
+
+      <div class="button-container">
+        <button class="button" type="submit" [disabled]="isChecking">
+          {{ isChecking ? 'Wird geprüft...' : 'Login' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

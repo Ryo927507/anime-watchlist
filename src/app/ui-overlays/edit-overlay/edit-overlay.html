@@ -1,0 +1,53 @@
+<div class="edit-overlay-backdrop" aria-modal="true" role="dialog">
+  <div class="edit-overlay-surface">
+    <h2 class="header-label">Bearbeiten</h2>
+    <div class="input-container">
+      <label class="input-label" for="edit-anime-title">Titel</label>
+      <input
+        id="edit-anime-title"
+        class="input-edit"
+        type="text"
+        [(ngModel)]="animeTitle"
+        required
+      />
+
+      <label class="input-label" for="edit-anime-status">Status</label>
+      <div class="status-options" role="radiogroup" aria-label="Status auswählen">
+        @for (status of statuses; track status.value) {
+          <label class="status-option" [class]="status.className" [class.selected]="animeStatus === status.value">
+            <input
+              type="radio"
+              name="edit-anime-status"
+              [value]="status.value"
+              [(ngModel)]="animeStatus"
+              required
+            />
+            <mat-icon aria-hidden="true">{{ status.icon }}</mat-icon>
+            <span>{{ status.value }}</span>
+          </label>
+        }
+      </div>
+
+      <label class="input-label" for="edit-anime-comment">Kommentar</label>
+      <input
+        id="edit-anime-comment"
+        class="input-edit"
+        type="text"
+        [(ngModel)]="animeComment"
+      />
+    </div>
+
+    @if (errorMessage) {
+      <p class="error-message" role="alert">{{ errorMessage }}</p>
+    }
+
+    <div class="button-container">
+      <button class="button cancel-button" type="button" (click)="cancelButtonClicked()" [disabled]="isSaving">
+        Abbrechen
+      </button>
+      <button class="button save-button" type="button" (click)="saveButtonClicked()" [disabled]="isSaving">
+        {{ isSaving ? 'Speichert...' : 'Speichern' }}
+      </button>
+    </div>
+  </div>
+</div>

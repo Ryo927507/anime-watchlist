@@ -14,7 +14,15 @@
 
 @if ((outputAnime$ | async); as outputAnime) {
   @for (anime of outputAnime.slice(currentPage * 25, (currentPage + 1) * 25); track anime.title_english) {
-    <app-anime-entry [animeEntry]="anime"></app-anime-entry>
+    <app-anime-entry
+      [root]="loginService.currentUser"
+      [anime]="{
+        id: anime.id,
+        title: anime.title_english,
+        status: anime.status,
+        comment: anime.comment
+      }"
+    ></app-anime-entry>
   }
 }
 

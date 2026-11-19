@@ -1,11 +1,12 @@
 <div class="header-container">
-  <div class="button left-button" [class.selected]="tabSelectionService.selectedTab === 0" (click)="onSettingsButtonClick()">
-    <mat-icon>settings</mat-icon>
-  </div>
-
-  <div class="title" [class.selected]="tabSelectionService.selectedTab === 1" (click)="onTitleClick()">Anime Watchlist</div>
-
-  <div class="button right-button" [class.selected]="tabSelectionService.selectedTab === 2" (click)="onAddButtonClick()">
-    <mat-icon>playlist_add</mat-icon>
-  </div>
+  <button
+    class="logout-button"
+    type="button"
+    aria-label="Logout"
+    title="Logout"
+    (click)="loginService.logout()"
+  >
+    <mat-icon aria-hidden="true">logout</mat-icon>
+  </button>
+  <div class="title">🎬 Anime Watchlist</div>
 </div>

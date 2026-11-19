@@ -1,26 +1,286 @@
 @import '../../scss/variables.scss';
 
+:host {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
 .main {
   display: flex;
   position: relative;
   width: 100%;
-  min-height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  justify-content: center;
+  background: $signatureColor;
 }
 
 .container {
-  height: 82.5vh;
-  width: 70vw;
-  border : 1px solid $borderColor;
-  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 24rem;
+  height: 100%;
+  min-height: 0;
   padding: 1rem;
-  margin: auto;
-  margin-top: 1rem;
-  background-color: $backgroundColor;
-  overflow-y: auto;
+  box-sizing: border-box;
 }
 
-@media (max-width: 500px) {
-  .container {
-    width: 85vw;
-  }
+.search-container {
+  display: flex;
+  flex: 0 0 3.25rem;
+  align-items: center;
+  gap: 0.65rem;
+  height: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  background: #1f2937;
+  color: #9ca3af;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.search-container:focus-within {
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 1px #f9fafb;
+}
+
+.search-container.disabled {
+  opacity: 0.6;
+}
+
+.search-container.disabled .search-input {
+  cursor: not-allowed;
+}
+
+.search-icon {
+  flex: 0 0 auto;
+  color: #60a5fa;
+}
+
+.search-input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f9fafb;
+  font: inherit;
+  appearance: none;
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+}
+
+.list-toggle {
+  display: flex;
+  gap: 0.25rem;
+  margin: 1.4rem 0 1.25rem;
+  padding: 0.35rem;
+  border-radius: 1rem;
+  background: #1f2937;
+}
+
+.list-toggle button {
+  flex: 1;
+  min-height: 2.6rem;
+  border: 0;
+  border-radius: 0.7rem;
+  background: transparent;
+  color: #bfdbfe;
+  font: inherit;
+  cursor: pointer;
+}
+
+.list-toggle button.selected {
+  background: #6366f1;
+  color: #fff;
+  font-weight: 600;
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 2.75rem;
+  margin: -0.5rem 0 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 0.75rem;
+  background: #1f2937;
+  color: #e2e8f0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-toggle-selection {
+  margin-left: auto;
+  color: #a5b4fc;
+  font-size: 0.85rem;
+}
+
+.filter-toggle:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 2px;
+}
+
+.status-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: -0.25rem 0 1rem;
+}
+
+.status-toggle button {
+  flex: 1 1 auto;
+  min-height: 2.25rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 0.7rem;
+  background: #1f2937;
+  color: #bfdbfe;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.status-toggle button.selected {
+  border-color: #818cf8;
+  background: rgba(99, 102, 241, 0.35);
+  color: #fff;
+  font-weight: 600;
+}
+
+.anime-count {
+  flex: 0 0 auto;
+  margin-bottom: 0.75rem;
+  color: #cbd5e1;
+}
+
+.anime-list {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.letter-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.35rem 0 -0.25rem;
+}
+
+.letter-mark {
+  display: grid;
+  flex: 0 0 1.85rem;
+  width: 1.85rem;
+  height: 1.85rem;
+  place-items: center;
+  box-sizing: border-box;
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.24), rgba(96, 165, 250, 0.12));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: #c7d2fe;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.letter-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.35), rgba(148, 163, 184, 0));
+}
+
+.empty-list {
+  margin: 1rem 0;
+  color: #cbd5e1;
+}
+
+.add-anime-button {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1000;
+  display: grid;
+  width: 3.75rem;
+  height: 3.75rem;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #6366f1;
+  box-shadow: 0 0.5rem 1.5rem rgba(79, 70, 229, 0.4);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+
+.add-anime-button:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.add-anime-button mat-icon {
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+}
+
+.add-anime-button:focus-visible {
+  outline: 3px solid #c7d2fe;
+  outline-offset: 3px;
+}
+
+.add-anime-button.empty-state {
+  position: absolute;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  width: 8rem;
+  height: 8rem;
+  transform: translate(-50%, -50%);
+}
+
+.add-anime-button.empty-state mat-icon {
+  width: 4rem;
+  height: 4rem;
+  font-size: 4rem;
+}
+
+.add-anime-button.empty-state:hover {
+  transform: translate(-50%, calc(-50% - 2px));
+}
+
+.empty-state-hint {
+  position: absolute;
+  top: calc(50% + 5rem);
+  left: 50%;
+  width: min(100% - 2rem, 24rem);
+  margin: 0;
+  transform: translateX(-50%);
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
 }
